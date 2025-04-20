@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_play_now"
+        android:icon="@drawable/ic_play"
+        android:title="Play Now" />
+    <item
+        android:id="@+id/action_add_to_playlist"
+        android:icon="@drawable/ic_playlist_add"
+        android:title="Add to Playlist" />
+    <item
+        android:id="@+id/action_queue_next"
+        android:icon="@drawable/ic_queue"
+        android:title="Queue Next" />
+    <item
+        android:id="@+id/action_like"
+        android:icon="@drawable/ic_heart"
+        android:title="Like" />
+</menu> 
