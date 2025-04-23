@@ -30,7 +30,7 @@
 
         <activity
             android:name=".ui.player.PlayerActivity"
-            android:theme="@style/Theme.MidnightMusic" />
+            android:theme="@style/Theme.MidnightMusic.NoActionBar" />
 
     </application>
 </manifest>

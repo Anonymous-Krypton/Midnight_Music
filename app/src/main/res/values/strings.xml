@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Midnight Music </string>
+    <string name="app_name">Midnight Music</string>
 
+    <!-- Music Service -->
+    <string name="notification_channel_name">Music Playback</string>
+    <string name="notification_channel_description">Controls for currently playing music</string>
+
+    <!-- Player Controls -->
+    <string name="play_pause">Play/Pause</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="like">Like</string>
+    <string name="queue">Queue</string>
+    <string name="options">Options</string>
+    <string name="close">Close</string>
 </resources>

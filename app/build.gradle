@@ -79,6 +79,20 @@ dependencies {
     // Add Picasso
     implementation 'com.squareup.picasso:picasso:2.8'
 
+    // Media3 (ExoPlayer)
+    def media3_version = "1.2.1"
+    implementation "androidx.media3:media3-exoplayer:$media3_version"
+    implementation "androidx.media3:media3-ui:$media3_version"
+    implementation "androidx.media3:media3-session:$media3_version"
+    
+    // Glide for image loading
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
+    
+    // Palette for dynamic colors
+    implementation 'androidx.palette:palette:1.0.0'
+
     // Testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

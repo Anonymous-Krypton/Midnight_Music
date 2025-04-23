@@ -1,200 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
-
-    <ImageButton
-        android:id="@+id/collapse_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_chevron_down"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/text_primary" />
-
-    <ImageButton
-        android:id="@+id/more_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_more"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/text_primary" />
+    android:background="@color/black"
+    android:transitionGroup="true">
 
     <ImageView
-        android:id="@+id/album_art"
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:alpha="0.3"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/close"
+        android:src="@drawable/ic_arrow_down"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnOptions"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/options"
+        android:src="@drawable/ic_more_vert"
+        android:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgAlbumArt"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="32dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/placeholder_album"
+        android:transitionName="transition_album_art"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/collapse_button" />
+        app:layout_constraintTop_toBottomOf="@id/btnClose"
+        app:layout_constraintWidth_percent="0.8"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Album" />
 
     <TextView
-        android:id="@+id/song_title"
+        android:id="@+id/txtSongName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:ellipsize="end"
+        android:gravity="center"
         android:maxLines="1"
-        android:text="Song Title"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:transitionName="transition_song_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/album_art" />
+        app:layout_constraintTop_toBottomOf="@id/imgAlbumArt" />
 
     <TextView
-        android:id="@+id/artist_name"
+        android:id="@+id/txtArtistName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
+        android:gravity="center"
         android:maxLines="1"
-        android:text="Artist Name"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/gray_light"
         android:textSize="16sp"
+        android:transitionName="transition_artist_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/song_title" />
+        app:layout_constraintTop_toBottomOf="@id/txtSongName" />
 
-    <SeekBar
-        android:id="@+id/seek_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="24dp"
-        android:progressTint="@color/primary"
-        android:thumbTint="@color/primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/artist_name" />
-
-    <TextView
-        android:id="@+id/current_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
-        android:text="0:00"
-        android:textColor="@color/text_secondary"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar" />
-
-    <TextView
-        android:id="@+id/total_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="32dp"
-        android:text="3:30"
-        android:textColor="@color/text_secondary"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seek_bar" />
-
-    <LinearLayout
-        android:id="@+id/controls_container"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/controlsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/current_time">
-
-        <ImageButton
-            android:id="@+id/shuffle_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_shuffle"
-            app:tint="@color/text_secondary" />
-
-        <ImageButton
-            android:id="@+id/previous_button"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="24dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_previous"
-            app:tint="@color/text_primary" />
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/play_pause_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:src="@drawable/ic_pause"
-            app:backgroundTint="@color/primary"
-            app:fabSize="normal"
-            app:tint="@color/text_primary" />
-
-        <ImageButton
-            android:id="@+id/next_button"
+            android:id="@+id/btnPlayPause"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginEnd="24dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_next"
-            app:tint="@color/text_primary" />
+            android:contentDescription="@string/play_pause"
+            android:scaleType="center"
+            android:transitionName="transition_play_button"
+            app:fabCustomSize="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnNext"
+            app:layout_constraintStart_toEndOf="@id/btnPrevious"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
 
         <ImageButton
-            android:id="@+id/repeat_button"
+            android:id="@+id/btnPrevious"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_repeat"
-            app:tint="@color/text_secondary" />
+            android:contentDescription="@string/previous"
+            android:src="@drawable/ic_previous"
+            app:layout_constraintBottom_toBottomOf="@id/btnPlayPause"
+            app:layout_constraintEnd_toStartOf="@id/btnPlayPause"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnPlayPause"
+            app:tint="@color/white" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/btnNext"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/next"
+            android:src="@drawable/ic_next"
+            app:layout_constraintBottom_toBottomOf="@id/btnPlayPause"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnPlayPause"
+            app:layout_constraintTop_toTopOf="@id/btnPlayPause"
+            app:tint="@color/white" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:progressTint="@color/accent"
+            android:thumbTint="@color/accent"
+            app:layout_constraintBottom_toTopOf="@id/btnPlayPause"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtCurrentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/gray_light"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/seekBar"
+            app:layout_constraintTop_toBottomOf="@id/seekBar"
+            tools:text="0:00" />
+
+        <TextView
+            android:id="@+id/txtTotalTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/gray_light"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/seekBar"
+            app:layout_constraintTop_toBottomOf="@id/seekBar"
+            tools:text="3:45" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:id="@+id/extraControlsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/controls_container">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
-            android:id="@+id/devices_button"
+            android:id="@+id/btnLike"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginEnd="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_devices"
-            app:tint="@color/text_secondary" />
+            android:contentDescription="@string/like"
+            android:src="@drawable/ic_favorite_border"
+            android:tint="@color/white" />
 
         <ImageButton
-            android:id="@+id/queue_button"
+            android:id="@+id/btnQueue"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_queue"
-            app:tint="@color/text_secondary" />
-
-        <ImageButton
-            android:id="@+id/like_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_heart"
-            app:tint="@color/text_secondary" />
-
+            android:contentDescription="@string/queue"
+            android:src="@drawable/ic_queue_music"
+            android:tint="@color/white" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout> 

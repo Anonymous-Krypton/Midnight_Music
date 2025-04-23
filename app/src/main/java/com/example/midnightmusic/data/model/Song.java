@@ -36,6 +36,9 @@ public class Song {
     @SerializedName("url")
     private String downloadUrl;
 
+    @SerializedName("media_url")
+    private String mediaUrl;
+
     @SerializedName("year")
     private String year;
 
@@ -95,6 +98,13 @@ public class Song {
 
     public String getDownloadUrl() { return downloadUrl; }
     public void setDownloadUrl(String downloadUrl) { this.downloadUrl = downloadUrl; }
+
+    public String getMediaUrl() { 
+        if (mediaUrl != null) return mediaUrl;
+        if (downloadUrl != null) return downloadUrl;
+        return null; // No fallback URL for media - should handle this case in the player
+    }
+    public void setMediaUrl(String mediaUrl) { this.mediaUrl = mediaUrl; }
 
     public String getYear() { return year; }
     public void setYear(String year) { this.year = year; }

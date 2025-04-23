@@ -1,5 +1,6 @@
 package com.example.midnightmusic.ui.search;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -24,6 +25,8 @@ import com.example.midnightmusic.ui.adapters.GenreAdapter;
 import com.example.midnightmusic.data.model.Song;
 import com.example.midnightmusic.data.network.JioSaavnService;
 import com.google.android.material.textfield.TextInputEditText;
+import com.example.midnightmusic.player.MusicPlayerManager;
+import com.example.midnightmusic.ui.player.PlayerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,26 +115,29 @@ public class SearchFragment extends Fragment implements GenreAdapter.OnGenreClic
         searchAdapter = new SearchAdapter(new SearchAdapter.SearchAdapterListener() {
             @Override
             public void onSongClick(Song song) {
-                Toast.makeText(requireContext(), "Playing: " + song.getSong(), Toast.LENGTH_SHORT).show();
+                MusicPlayerManager.getInstance(requireContext()).playSong(song);
             }
 
             @Override
             public void onPlayNow(Song song) {
-                Toast.makeText(requireContext(), "Playing now: " + song.getSong(), Toast.LENGTH_SHORT).show();
+                MusicPlayerManager.getInstance(requireContext()).playSong(song);
             }
 
             @Override
             public void onAddToPlaylist(Song song) {
+                // TODO: Implement playlist functionality
                 Toast.makeText(requireContext(), "Add to playlist: " + song.getSong(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onQueueNext(Song song) {
-                Toast.makeText(requireContext(), "Queued next: " + song.getSong(), Toast.LENGTH_SHORT).show();
+                MusicPlayerManager.getInstance(requireContext()).addToQueue(song);
+                Toast.makeText(requireContext(), "Added to queue: " + song.getSong(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onToggleLike(Song song) {
+                // TODO: Implement like functionality with Room database
                 Toast.makeText(requireContext(), "Toggled like for: " + song.getSong(), Toast.LENGTH_SHORT).show();
             }
         });

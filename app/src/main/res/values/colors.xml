@@ -39,4 +39,8 @@
     <!-- Button Colors -->
     <color name="button_disabled">#66B3B3B3</color>
     <color name="button_enabled">@color/accent</color>
+    
+    <!-- New colors for the player theme -->
+    <color name="gray_light">#B3FFFFFF</color>
+    <color name="gray_dark">#4D4D4D</color>
 </resources>

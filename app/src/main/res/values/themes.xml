@@ -8,43 +8,27 @@
 
   <style name="AppTheme" parent="Base.AppTheme" />
 
-  <style name="Theme.MidnightMusic" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    <!-- Colors -->
+  <style name="Theme.MidnightMusic" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Primary brand color -->
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryVariant">@color/primary_variant</item>
-    <item name="colorOnPrimary">@color/on_primary</item>
-    <item name="colorAccent">@color/accent</item>
+    <item name="colorOnPrimary">@color/white</item>
+    <!-- Secondary brand color -->
     <item name="colorSecondary">@color/accent</item>
     <item name="colorSecondaryVariant">@color/accent_variant</item>
-    
+    <item name="colorOnSecondary">@color/black</item>
     <!-- Background colors -->
     <item name="android:colorBackground">@color/background</item>
     <item name="colorSurface">@color/surface</item>
-    <item name="colorError">@color/error</item>
-    
-    <!-- Text colors -->
-    <item name="colorOnBackground">@color/on_background</item>
-    <item name="colorOnSurface">@color/on_surface</item>
-    <item name="colorOnError">@color/on_error</item>
-    
-    <!-- System bars -->
-    <item name="android:statusBarColor">@color/background</item>
-    <item name="android:navigationBarColor">@color/background</item>
-    <item name="android:windowLightStatusBar">false</item>
-    <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
-    
-    <!-- Typography -->
-    <item name="textAppearanceHeadline1">@style/TextAppearance.MidnightMusic.Headline1</item>
-    <item name="textAppearanceHeadline2">@style/TextAppearance.MidnightMusic.Headline2</item>
-    <item name="textAppearanceSubtitle1">@style/TextAppearance.MidnightMusic.Subtitle1</item>
-    <item name="textAppearanceBody1">@style/TextAppearance.MidnightMusic.Body1</item>
-    <item name="textAppearanceCaption">@style/TextAppearance.MidnightMusic.Caption</item>
-    
-    <!-- Component styles -->
-    <item name="materialCardViewStyle">@style/Widget.MidnightMusic.CardView</item>
-    <item name="bottomNavigationStyle">@style/Widget.MidnightMusic.BottomNavigationView</item>
-    <item name="materialButtonStyle">@style/Widget.MidnightMusic.Button</item>
-    <item name="tabStyle">@style/Widget.MidnightMusic.TabLayout</item>
+    <item name="colorOnSurface">@color/text_primary</item>
+    <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+    <!-- Status bar color -->
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <!-- Text appearances -->
+    <item name="textAppearanceBodyLarge">@style/TextAppearance.MidnightMusic.BodyLarge</item>
+    <item name="textAppearanceBodyMedium">@style/TextAppearance.MidnightMusic.BodyMedium</item>
+    <item name="textAppearanceBodySmall">@style/TextAppearance.MidnightMusic.BodySmall</item>
   </style>
 
   <!-- Typography Styles -->
@@ -76,6 +60,22 @@
     <item name="fontFamily">@font/poppins</item>
     <item name="android:textSize">12sp</item>
     <item name="android:textColor">@color/text_secondary</item>
+  </style>
+
+  <!-- Text Appearances -->
+  <style name="TextAppearance.MidnightMusic.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+    <item name="android:textColor">?attr/colorOnSurface</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="TextAppearance.MidnightMusic.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+    <item name="android:textColor">?attr/colorOnSurface</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="TextAppearance.MidnightMusic.BodySmall" parent="TextAppearance.Material3.BodySmall">
+    <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    <item name="android:textSize">12sp</item>
   </style>
 
   <!-- Component Styles -->
