@@ -57,13 +57,17 @@ public class Song {
     @SerializedName("image")
     private String image;
 
+    // This tracks whether a song is liked or not
     private boolean isLiked;
+    
+    // Timestamp for sorting purposes
     private long timestamp;
 
     // Constructor
     public Song(@NonNull String id) {
         this.id = id;
         this.timestamp = System.currentTimeMillis();
+        this.isLiked = false; // Default not liked
     }
 
     // Getters and Setters
@@ -133,5 +137,18 @@ public class Song {
 
     public String getImage() {
         return image;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return id.equals(song.id);
+    }
+    
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 } 

@@ -3,17 +3,17 @@
     <item
         android:id="@+id/action_play_now"
         android:icon="@drawable/ic_play"
-        android:title="Play Now" />
+        android:title="@string/play_pause" />
     <item
         android:id="@+id/action_add_to_playlist"
         android:icon="@drawable/ic_playlist_add"
-        android:title="Add to Playlist" />
+        android:title="@string/add_to_playlist" />
     <item
         android:id="@+id/action_queue_next"
         android:icon="@drawable/ic_queue"
-        android:title="Queue Next" />
+        android:title="@string/queue" />
     <item
         android:id="@+id/action_like"
         android:icon="@drawable/ic_heart"
-        android:title="Like" />
+        android:title="@string/like" />
 </menu> 

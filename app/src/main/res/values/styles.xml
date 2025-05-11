@@ -17,4 +17,30 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
+
+    <!-- Playlist Dialog Style -->
+    <style name="PlaylistDialogStyle" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:background">@drawable/bg_rounded_dialog</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PlaylistDialogButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/PlaylistDialogButtonStyle</item>
+        <item name="buttonBarNeutralButtonStyle">@style/PlaylistDialogButtonStyle</item>
+        <item name="android:windowMinWidthMajor">60%</item>
+        <item name="android:windowMinWidthMinor">60%</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:windowTitleStyle">@style/PlaylistDialogTitleStyle</item>
+    </style>
+
+    <style name="PlaylistDialogTitleStyle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="PlaylistDialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/accent</item>
+        <item name="rippleColor">@color/accent_20</item>
+    </style>
 </resources> 

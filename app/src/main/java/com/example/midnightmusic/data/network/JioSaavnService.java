@@ -10,31 +10,31 @@ public interface JioSaavnService {
     String BASE_URL = "https://saavnapi-nine.vercel.app";
 
     @GET("result/")
-    Call<List<Song>> searchSongs(
+    Call<List<SongResponse>> searchSongs(
         @Query("query") String query,
         @Query("lyrics") boolean lyrics
     );
 
     @GET("song/")
-    Call<Song> getSongDetails(
+    Call<SongResponse> getSongDetails(
         @Query("query") String songLink,
         @Query("lyrics") boolean lyrics
     );
 
     @GET("playlist/")
-    Call<List<Song>> getPlaylist(
+    Call<List<SongResponse>> getPlaylist(
         @Query("query") String playlistLink,
         @Query("lyrics") boolean lyrics
     );
 
     @GET("album/")
-    Call<List<Song>> getAlbum(
+    Call<List<SongResponse>> getAlbum(
         @Query("query") String albumLink,
         @Query("lyrics") boolean lyrics
     );
 
     @GET("lyrics/")
-    Call<Song> getLyrics(
+    Call<SongResponse> getLyrics(
         @Query("query") String songLink
     );
 } 

@@ -29,8 +29,17 @@ public interface SongDao {
     @Query("SELECT * FROM songs WHERE id = :songId")
     LiveData<Song> getSongById(String songId);
 
+    @Query("SELECT * FROM songs WHERE id = :songId")
+    Song getSongByIdSync(String songId);
+
     @Query("SELECT * FROM songs WHERE isLiked = 1 ORDER BY timestamp DESC")
     LiveData<List<Song>> getLikedSongs();
+
+    @Query("SELECT * FROM songs WHERE isLiked = 1 ORDER BY timestamp DESC")
+    List<Song> getLikedSongsSync();
+
+    @Query("SELECT COUNT(*) FROM songs WHERE id = :songId AND isLiked = 1")
+    boolean isSongLiked(String songId);
 
     @Query("SELECT * FROM songs WHERE id IN (:songIds)")
     LiveData<List<Song>> getSongsByIds(List<String> songIds);

@@ -9,8 +9,17 @@ import androidx.room.TypeConverters;
 
 import com.example.midnightmusic.data.model.Song;
 import com.example.midnightmusic.data.model.Playlist;
+import com.example.midnightmusic.data.model.PlaylistSongCrossRef;
 
-@Database(entities = {Song.class, Playlist.class}, version = 1, exportSchema = false)
+@Database(
+    entities = {
+        Song.class, 
+        Playlist.class, 
+        PlaylistSongCrossRef.class
+    }, 
+    version = 2, 
+    exportSchema = false
+)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "midnight_music_db";
@@ -29,5 +38,13 @@ public abstract class AppDatabase extends RoomDatabase {
                     .build();
         }
         return instance;
+    }
+
+    /**
+     * Destroys the current database instance, forcing it to be recreated
+     * on the next call to getInstance().
+     */
+    public static void destroyInstance() {
+        instance = null;
     }
 } 

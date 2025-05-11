@@ -43,4 +43,7 @@
     <!-- New colors for the player theme -->
     <color name="gray_light">#B3FFFFFF</color>
     <color name="gray_dark">#4D4D4D</color>
+    
+    <!-- New color for accent_20 -->
+    <color name="accent_20">#337C4DFF</color>
 </resources>

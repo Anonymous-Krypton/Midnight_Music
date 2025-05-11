@@ -32,5 +32,10 @@
             android:name=".ui.player.PlayerActivity"
             android:theme="@style/Theme.MidnightMusic.NoActionBar" />
 
+        <activity
+            android:name=".ui.playlist.PlaylistDetailActivity"
+            android:theme="@style/Theme.MidnightMusic"
+            android:exported="false" />
+
     </application>
 </manifest>

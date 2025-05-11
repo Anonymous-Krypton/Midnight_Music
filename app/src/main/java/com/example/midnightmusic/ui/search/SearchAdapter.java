@@ -1,6 +1,7 @@
 package com.example.midnightmusic.ui.search;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -90,6 +91,11 @@ public class SearchAdapter extends ListAdapter<Song, SearchAdapter.SongViewHolde
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
                 Song song = getItem(position);
+                
+                // Set the correct text and icon for the like/unlike menu item
+                MenuItem likeItem = popup.getMenu().findItem(R.id.action_like);
+                updateLikeMenuItem(likeItem, song.isLiked());
+                
                 popup.setOnMenuItemClickListener(item -> {
                     int itemId = item.getItemId();
                     if (itemId == R.id.action_play_now) {
@@ -102,7 +108,11 @@ public class SearchAdapter extends ListAdapter<Song, SearchAdapter.SongViewHolde
                         listener.onQueueNext(song);
                         return true;
                     } else if (itemId == R.id.action_like) {
+                        // Toggle liked status and notify listener
                         listener.onToggleLike(song);
+                        
+                        // Update this menu item right away
+                        updateLikeMenuItem(item, song.isLiked());
                         return true;
                     }
                     return false;
@@ -110,6 +120,19 @@ public class SearchAdapter extends ListAdapter<Song, SearchAdapter.SongViewHolde
             }
             
             popup.show();
+        }
+        
+        /**
+         * Updates like menu item text and icon based on current liked status
+         */
+        private void updateLikeMenuItem(MenuItem item, boolean isLiked) {
+            if (isLiked) {
+                item.setTitle(R.string.unlike);
+                item.setIcon(R.drawable.ic_heart_filled);
+            } else {
+                item.setTitle(R.string.like);
+                item.setIcon(R.drawable.ic_heart);
+            }
         }
 
         private String formatDuration(String durationStr) {
@@ -127,14 +150,17 @@ public class SearchAdapter extends ListAdapter<Song, SearchAdapter.SongViewHolde
     static class SongDiffCallback extends DiffUtil.ItemCallback<Song> {
         @Override
         public boolean areItemsTheSame(@NonNull Song oldItem, @NonNull Song newItem) {
-            return oldItem.getSong().equals(newItem.getSong());
+            // Items are the same if they have the same ID
+            return oldItem.getId().equals(newItem.getId());
         }
 
         @Override
         public boolean areContentsTheSame(@NonNull Song oldItem, @NonNull Song newItem) {
+            // Check if any important properties have changed
             return oldItem.getSong().equals(newItem.getSong())
                     && oldItem.getSingers().equals(newItem.getSingers())
-                    && oldItem.getImageUrl().equals(newItem.getImageUrl());
+                    && oldItem.getImageUrl().equals(newItem.getImageUrl())
+                    && oldItem.isLiked() == newItem.isLiked();  // Check liked status too
         }
     }
 } 
